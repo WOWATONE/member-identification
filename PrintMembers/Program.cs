@@ -32,11 +32,8 @@ namespace PrintMembers
 
                 var printerGuid = Guid.Parse(Properties.Settings.Default.RfidPrinter);
 
-                const int startFrom = 0x00;
-                var startBytes = BitConverter.GetBytes(startFrom);
-
                 // первые 6 байт случайны - взяты из сгенерированного нового Guid :D
-                var epc = new byte[] {0xF5, 0x55, 0xB4, 0xBF, 0xF7, 0x1E, 0x00, 0x00, startBytes[3], startBytes[2], startBytes[1], startBytes[0]};
+                var epc = new byte[] {0xF5, 0x55, 0xB4, 0xBF, 0xF7, 0x1E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
                 using (var session = new Session())
                 {

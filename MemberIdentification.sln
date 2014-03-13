@@ -3,13 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemberIdentification", "MemberIdentification\MemberIdentification.csproj", "{FD9F5C98-7636-4D79-86BA-90D6765877DE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{E3FAD5EB-2710-4518-B73B-2D7FE63DF332}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintMembers", "PrintMembers\PrintMembers.csproj", "{A380806E-3103-48F6-AC14-383819F9B7C6}"
 EndProject
 Global

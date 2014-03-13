@@ -9,9 +9,10 @@ using PrintMembers.DatabaseCode;
 using RfidBus.Primitives.Messages.Printers;
 using RfidBus.Primitives.Messages.Printers.Elements;
 using RfidBus.Primitives.Network;
-using RfidBus.Serializers;
+using RfidBus.Serializers.Pb;
 
 using RfidCenter.Basic;
+using RfidCenter.Basic.Arguments;
 
 namespace PrintMembers
 {
@@ -22,10 +23,12 @@ namespace PrintMembers
             try
             {
                 ConnectionHelper.Connect(AutoCreateOption.DatabaseAndSchema);
+                var pbCommunication = new PbCommunicationDescription();
+                var config = new ParametersValues(pbCommunication.GetClientConfiguration());
+                config.SetValue(ConfigConstants.PARAMETER_HOST, Properties.Settings.Default.BusHost);
+                config.SetValue(ConfigConstants.PARAMETER_PORT, Properties.Settings.Default.BusPort);
 
-                var client = new RfidBusClient(Properties.Settings.Default.BusHost,
-                                               Properties.Settings.Default.BusPort,
-                                               new PbSerializer());
+                var client = new RfidBusClient(pbCommunication, config);
 
                 if (!client.Authorize(Properties.Settings.Default.BusLogin, Properties.Settings.Default.BusPassword))
                     throw new BaseException(RfidErrorCode.InvalidLoginAndPassword);

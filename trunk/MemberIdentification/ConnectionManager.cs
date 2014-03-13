@@ -4,9 +4,10 @@ using System.Linq;
 
 using RfidBus.Primitives.Messages.Readers;
 using RfidBus.Primitives.Network;
-using RfidBus.Serializers;
+using RfidBus.Serializers.Pb;
 
 using RfidCenter.Basic;
+using RfidCenter.Basic.Arguments;
 
 namespace MemberIdentification
 {
@@ -36,9 +37,12 @@ namespace MemberIdentification
             {
                 this._listenReaderId = Guid.Parse(Properties.Settings.Default.ListenReader);
 
-                this._client = new RfidBusClient(Properties.Settings.Default.BusHost,
-                                                 Properties.Settings.Default.BusPort,
-                                                 new PbSerializer());
+                var pbCommunication = new PbCommunicationDescription();
+                var config = new ParametersValues(pbCommunication.GetClientConfiguration());
+                config.SetValue(ConfigConstants.PARAMETER_HOST, Properties.Settings.Default.BusHost);
+                config.SetValue(ConfigConstants.PARAMETER_PORT, Properties.Settings.Default.BusPort);
+
+                this._client = new RfidBusClient(pbCommunication, config);
 
                 if (!this._client.Authorize(Properties.Settings.Default.BusLogin,
                                             Properties.Settings.Default.BusPassword))

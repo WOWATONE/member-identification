@@ -41,6 +41,9 @@
     <Reference Include="DevExpress.Data.v13.2, Version=13.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.Xpf.Mvvm.v13.2, Version=13.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DevExpress.Xpf.Core.v13.2, Version=13.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -54,23 +57,20 @@
     <Reference Include="protobuf-net">
       <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="RfidBus.Primitives, Version=2.5.0.2, Culture=neutral, PublicKeyToken=c77c3fea3fdc4436, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RfidBus.Primitives.2.5.0.2\lib\net45\RfidBus.Primitives.dll</HintPath>
+    <Reference Include="RfidBus.Primitives">
+      <HintPath>..\packages\RfidBus.Primitives.3.0.0.0\lib\net45\RfidBus.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="RfidBus.Serializers.Pb, Version=2.5.0.1, Culture=neutral, PublicKeyToken=c77c3fea3fdc4436, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RfidBus.Serializers.Pb.2.5.0.1\lib\net45\RfidBus.Serializers.Pb.dll</HintPath>
+    <Reference Include="RfidBus.Serializers.Pb">
+      <HintPath>..\packages\RfidBus.Serializers.Pb.3.0.0.0\lib\net45\RfidBus.Serializers.Pb.dll</HintPath>
     </Reference>
-    <Reference Include="RfidCenter.Basic, Version=1.0.5.1, Culture=neutral, PublicKeyToken=c77c3fea3fdc4436, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RfidCenter.Basic.dll.1.0.5.1\lib\net40\RfidCenter.Basic.dll</HintPath>
+    <Reference Include="RfidCenter.Basic">
+      <HintPath>..\packages\RfidCenter.Basic.dll.1.0.8.1\lib\net40\RfidCenter.Basic.dll</HintPath>
     </Reference>
     <Reference Include="RfidCenter.Devices">
-      <HintPath>..\packages\RfidCenter.Devices.1.1.4.0\lib\net40\RfidCenter.Devices.dll</HintPath>
+      <HintPath>..\packages\RfidCenter.Devices.2.0.1.1\lib\net40\RfidCenter.Devices.dll</HintPath>
     </Reference>
     <Reference Include="RfidCenter.Printing">
-      <HintPath>..\packages\RfidCenter.Printing.1.4.0.3\lib\net40\RfidCenter.Printing.dll</HintPath>
+      <HintPath>..\packages\RfidCenter.Printing.1.5.0.0\lib\net40\RfidCenter.Printing.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -172,13 +172,6 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
-  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
